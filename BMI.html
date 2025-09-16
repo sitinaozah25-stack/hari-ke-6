@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator by Sija</title>
+    <link rel="stylesheet" href="BMI.css">
+</head>
+<body>
+    <h2>Kalkulator BMI (Body Mass Index)</h2>
+    <div class="calculator">
+        <div class="input-group">
+            <label for="beratBadan">Berat Badan (kg):</label>
+            <input type="number" id="beratBadan" placeholder="Masukkan berat badan" step="0.1" min="1">
+        </div>
+        
+        <div class="input-group">
+            <label for="tinggiBadan">Tinggi Badan (cm):</label>
+            <input type="number" id="tinggiBadan" placeholder="Masukkan tinggi badan" step="0.1" min="50">
+        </div>
+        
+        <div class="button-group">
+            <button onclick="hitungBMI()">Hitung BMI</button>
+            <button onclick="resetForm()" class="reset-btn">Reset</button>
+        </div>
+        
+        <div id="hasil"></div>
+        
+        <div class="info">
+            <h3>Kategori BMI:</h3>
+            <ul>
+                <li><span class="kategori kurus">Kurus:</span> BMI 18.5</li>
+                <li><span class="kategori normal">Normal:</span> BMI 18.5 - 24.9</li>
+                <li><span class="kategori berlebih">Berlebih:</span> BMI 25.0 - 29.9</li>
+                <li><span class="kategori obesitas1">Obesitas I:</span> BMI 30.0 - 34.9</li>
+                <li><span class="kategori obesitas2">Obesitas II:</span> BMI 35.0 - 39.9</li>
+                <li><span class="kategori obesitas3">Obesitas III:</span> BMI ≥ 40.0</li>
+            </ul>
+            
+            <div class="tips">
+                <h4>Tips Sehat:</h4>
+                <p>BMI adalah panduan umum. Konsultasikan dengan dokter untuk penilaian kesehatan yang lebih akurat.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="BMI.js"></script>
+</body>
+</html>

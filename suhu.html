@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter by Sija</title>
+    <link rel="stylesheet" href="suhu.css">
+</head>
+<body>
+    <h2>Konverter Suhu</h2>
+    <div class="converter">
+        <div class="input-group">
+            <input type="number" id="inputSuhu" placeholder="Masukkan suhu" step="any">
+            <select id="fromUnit">
+                <option value="celsius">Celsius (°C)</option>
+                <option value="fahrenheit">Fahrenheit (°F)</option>
+                <option value="kelvin">Kelvin (K)</option>
+                <option value="rankine">Rankine (°R)</option>
+                <option value="reamur">Réaumur (°Ré)</option>
+            </select>
+        </div>
+        
+        <div class="arrow">↓</div>
+        
+        <div class="input-group">
+            <select id="toUnit">
+                <option value="fahrenheit">Fahrenheit (°F)</option>
+                <option value="celsius">Celsius (°C)</option>
+                <option value="kelvin">Kelvin (K)</option>
+                <option value="rankine">Rankine (°R)</option>
+                <option value="reamur">Réaumur (°Ré)</option>
+            </select>
+        </div>
+        
+        <button onclick="konversiSuhu()">Konversi</button>
+        <button onclick="resetForm()" class="reset-btn">Reset</button>
+        <div id="hasil"></div>
+        
+        <div class="info">
+            <h3>Informasi Titik Referensi:</h3>
+            <ul>
+                <li>Titik beku air: 0°C = 32°F = 273.15K</li>
+                <li>Titik didih air: 100°C = 212°F = 373.15K</li>
+                <li>Suhu tubuh normal: 37°C = 98.6°F = 310.15K</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="suhu.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalkulatorBySija</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 50px;
+            background-color: #83bcb8;
+        }
+        
+        h2 {
+            text-align: center;
+            color: #817676, #90c4d1; 
+            margin-bottom: 30px;
+        }
+        
+        .calculator {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgb(233, 232, 232);
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+        
+        input[type="number"] {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        select {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            background: white;
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #106c76;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #00a1b3;
+        }
+        
+        #hasil {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            min-height: 20px;
+        }
+        
+        .error {
+            color: #dc3545;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .success {
+            color: #155724;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+        }
+    </style>
+</head>
+<body>
+    <h2>Kalkulator Sederhana</h2>
+    <div class="calculator">
+        <div class="input-group">
+            <input type="number" id="angka1" placeholder="Angka 1" step="any">
+            <select id="operator">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">×</option>
+                <option value="/">÷</option>
+            </select>
+            <input type="number" id="angka2" placeholder="Angka 2" step="any">
+        </div>
+        <button onclick="hitung()">Hitung</button>
+        <div id="hasil"></div>
+    </div>
+
+    <script>
+        function hitung() {
+            // Mengambil nilai dari input
+            const angka1 = parseFloat(document.getElementById('angka1').value);
+            const angka2 = parseFloat(document.getElementById('angka2').value);
+            const operator = document.getElementById('operator').value;
+            const hasilDiv = document.getElementById('hasil');
+            
+            // Validasi input
+            if (isNaN(angka1) || isNaN(angka2)) {
+                hasilDiv.innerHTML = 'Error: Mohon masukkan angka yang valid!';
+                hasilDiv.className = 'error';
+                return;
+            }
+            
+            let hasil;
+            let operatorText;
+            
+            // Melakukan perhitungan berdasarkan operator
+            switch (operator) {
+                case '+':
+                    hasil = angka1 + angka2;
+                    operatorText = '+';
+                    break;
+                case '-':
+                    hasil = angka1 - angka2;
+                    operatorText = '-';
+                    break;
+                case '*':
+                    hasil = angka1 * angka2;
+                    operatorText = '×';
+                    break;
+                case '/':
+                    if (angka2 === 0) {
+                        hasilDiv.innerHTML = 'Error: Tidak bisa membagi dengan nol!';
+                        hasilDiv.className = 'error';
+                        return;
+                    }
+                    hasil = angka1 / angka2;
+                    operatorText = '÷';
+                    break;
+                default:
+                    hasilDiv.innerHTML = 'Error: Operator tidak valid!';
+                    hasilDiv.className = 'error';
+                    return;
+            }
+            
+            // Menampilkan hasil
+            hasilDiv.innerHTML = `${angka1} ${operatorText} ${angka2} = ${hasil}`;
+            hasilDiv.className = 'success';
+        }
+        
+        // Fungsi untuk menghitung ketika menekan Enter
+        document.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                hitung();
+            }
+        });
+        
+        // Fungsi untuk membersihkan hasil ketika input berubah
+        function clearResult() {
+            document.getElementById('hasil').innerHTML = '';
+            document.getElementById('hasil').className = '';
+        }
+        
+        // Event listeners untuk membersihkan hasil ketika input berubah
+        document.getElementById('angka1').addEventListener('input', clearResult);
+        document.getElementById('angka2').addEventListener('input', clearResult);
+        document.getElementById('operator').addEventListener('change', clearResult);
+    </script>
+</body>
+</html>
