@@ -3,7 +3,7 @@ body {
     max-width: 600px;
     margin: 30px auto;
     padding: 20px;
-    background: linear-gradient(135deg, #85cad7 0%, #588185 100%);
+    background: linear-gradient(135deg, #106c76); 
     min-height: 100vh;
     color: #333;
 }
@@ -64,7 +64,7 @@ input[type="number"]:focus {
 button {
     flex: 1;
     padding: 15px;
-    background: linear-gradient(45deg, #74b9ff, #09bfe3);
+    background: linear-gradient(45deg, #499da6);
     color: white;
     border: none;
     border-radius: 10px;
@@ -86,7 +86,7 @@ button:active {
 }
 
 .reset-btn {
-    background: linear-gradient(45deg, #fd79a8, #e84393);
+    background: linear-gradient(45deg,#ad4f2d);
 }
 
 #hasil {
@@ -227,3 +227,16 @@ button:active {
         margin-bottom: 10px;
     }
 }
+ .kembalikehome {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f9fbfc;
+            color: rgb(23, 87, 95);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }

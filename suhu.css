@@ -3,7 +3,7 @@ body {
     max-width: 500px;
     margin: 50px auto;
     padding: 20px;
-    background: linear-gradient(135deg, #587a77 0%, #b6eded 100%);
+    background: linear-gradient(135deg, #106c76 0%);
     min-height: 100vh;
     color: #333;
 }
@@ -71,16 +71,16 @@ select:focus {
 
 .arrow {
     text-align: center;
-    font-size: 24px;
-    color: #66eae6;
-    margin: 10px 0;
+    font-size: 30px;
+    color: #0a3938;
+    margin: 5px 0;
     font-weight: bold;
 }
 
 button {
     width: 48%;
     padding: 15px;
-    background: linear-gradient(45deg, #77bac0, #7cb4b0);
+    background: linear-gradient(45deg,#60bbb5);
     color: white;
     border: none;
     border-radius: 10px;
@@ -185,3 +185,16 @@ button:active {
         font-size: 24px;
     }
 }
+ .kembalikehome {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f9fbfc;
+            color: rgb(23, 87, 95);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }

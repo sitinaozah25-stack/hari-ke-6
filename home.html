@@ -1,0 +1,327 @@
+<!-- views/home.ejs -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AplikasiBySija</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #106c76);
+            min-height: 100vh;
+        }
+
+        /* Header Navigation */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a.active {
+            background: #2196F3;
+            color: white;
+        }
+
+        .nav-links a:not(.active) {
+            color: #666;
+            background: transparent;
+        }
+
+        .nav-links a:not(.active):hover {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        /* Tool Cards */
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .tool-card.calculator:hover { border-color: #2196F3; }
+        .tool-card.temperature:hover { border-color: #f44336; }
+        .tool-card.bmi:hover { border-color: #4CAF50; }
+
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .calculator .tool-icon { color: #2196F3; }
+        .temperature .tool-icon { color: #f44336; }
+        .bmi .tool-icon { color: #4CAF50; }
+
+        .tool-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .tool-card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* About Section */
+        .about-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .about-section h2 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .about-section p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .btn {
+            background: #2196F3;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #1976D2;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-subtitle {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .tool-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links a span.nav-text {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <nav>
+            <div class="logo">Multi-Tool App</div>
+            <div class="nav-links">
+                <a href="home.html" class="%= currentPage === 'home' ? 'active' : '' %>">
+                    <span>🏠</span>
+                    <span class="nav-text">Home</span>
+                </a>
+                <a href="CalSija-app.html" class="%= currentPage === 'calculator' ? 'active' : '' %>">
+                    <span>🧮</span>
+                    <span class="nav-text">Kalkulator</span>
+                </a>
+                <a href="suhu.html" class="%= currentPage === 'temperature' ? 'active' : '' %>">
+                    <span>🌡️</span>
+                    <span class="nav-text">Konversi Suhu</span>
+                </a>
+                <a href="BMI.html" class="%= currentPage === 'bmi' ? 'active' : '' %>">
+                    <span>⚖️</span>
+                    <span class="nav-text">BMI Calculator</span>
+                </a>
+                <a href="About.html" class="%= currentPage === 'about' ? 'active' : '' %>">
+                    <span>👤</span>
+                    <span class="nav-text">About</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="hero">
+            <h1>Selamat Datang di Multi-Tool App</h1>
+            <p>Aplikasi serba guna untuk kebutuhan perhitungan sehari-hari</p>
+        </div>
+
+        <!-- Tool Cards -->
+        <div class="tool-grid">
+            <a href="CalSija-app.html" class="tool-card calculator">
+                <span class="tool-icon">🧮</span>
+                <h3>Kalkulator</h3>
+                <p>Lakukan perhitungan matematika dasar dengan mudah</p>
+            </a>
+
+            <a href="suhu.html" class="tool-card temperature">
+                <span class="tool-icon">🌡️</span>
+                <h3>Konversi Suhu</h3>
+                <p>Konversi suhu antara Celsius, Fahrenheit, dan Kelvin</p>
+            </a>
+
+            <a href="BMI.html" class="tool-card bmi">
+                <span class="tool-icon">⚖️</span>
+                <h3>BMI Calculator</h3>
+                <p>Hitung indeks massa tubuh dan kategori kesehatan</p>
+            </a>
+        </div>
+
+        <!-- About Section -->
+        <div class="about-section">
+            <h2>Tentang Aplikasi</h2>
+            <p>
+                Multi-Tool App adalah kumpulan alat-alat praktis yang dirancang untuk membantu aktivitas sehari-hari Anda. 
+                Dengan antarmuka yang sederhana dan mudah digunakan, aplikasi ini menyediakan berbagai fitur perhitungan yang berguna.
+            </p>
+            <a href="About.html" class="btn">
+                <span>👤</span>
+                Selengkapnya Tentang Developer
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Copyright_Sija.2025.</p>
+        <p class="footer-subtitle">Multi-Tool App - Aplikasi serba guna untuk kebutuhan sehari-hari</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Card hover animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.tool-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

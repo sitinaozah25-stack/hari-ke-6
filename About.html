@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Developer - Multi-Tool App</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #e3f2fd 0%, #c5cae9 100%);
+            min-height: 100vh;
+        }
+
+        /* Header Navigation */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a.active {
+            background: #2196F3;
+            color: white;
+        }
+
+        .nav-links a:not(.active) {
+            color: #666;
+            background: transparent;
+        }
+
+        .nav-links a:not(.active):hover {
+            background: #f5f5f5;
+            color: #333;
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .about-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2196F3, #21CBF3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            margin: 0 auto 1rem;
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+        }
+
+        .profile-header h1 {
+            font-size: 2.2rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .profile-status {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Content Sections */
+        .section {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #f5f5f5;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .section h2 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .section ul {
+            color: #666;
+            margin-left: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Cards */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-card.email:hover {
+            border-color: #4CAF50;
+        }
+
+        .contact-card.github:hover {
+            border-color: #333;
+        }
+
+        .contact-card.linkedin:hover {
+            border-color: #0077B5;
+        }
+
+        .contact-card .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .contact-card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .contact-card a {
+            color: #2196F3;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Skills Tags */
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: #2196F3;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Back Button */
+        .back-button {
+
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f9fbfc;
+            color: rgb(23, 87, 95);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        .back-button:hover {
+            background: #555;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-subtitle {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links a span.nav-text {
+                display: none;
+            }
+
+            .about-container {
+                padding: 1.5rem;
+            }
+
+            .profile-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Multi-Tool App</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-home">
+                    <span>🏠</span>
+                    <span class="nav-text">Home</span>
+                </a>
+                <a href="CalSija-app.html" class="nav-calculator">
+                    <span>🧮</span>
+                    <span class="nav-text">Kalkulator</span>
+                </a>
+                <a href="suhu.html" class="nav-temperature">
+                    <span>🌡️</span>
+                    <span class="nav-text">Konversi Suhu</span>
+                </a>
+                <a href="BMI.html" class="nav-bmi">
+                    <span>⚖️</span>
+                    <span class="nav-text">BMI Calculator</span>
+                </a>
+                <a href="About.html" class="nav-about active">
+                    <span>👤</span>
+                    <span class="nav-text">About</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="about-container">
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <div class="profile-avatar">👨‍💻</div>
+                <h1>Siti Jaozah</h1>
+                <p class="profile-subtitle">Web Developer & Student</p>
+                <span class="profile-status">🎓 Mahasiswa Pendidikan Agama Islam (PAI) </span>
+            </div>
+
+            <!-- Tentang Saya -->
+            <div class="section">
+                <h2>
+                    <span>🙋‍♂️</span>
+                    Tentang Saya
+                </h2>
+                <p>
+                    Halo! Saya Sija, seorang mahasiswa jurusan Pendidikan Agama Islam (PAI) yang sedang meraba-raba dalam dunia 
+                    pengembangan aplikasi web. Saya senang belajar teknologi baru dan menciptakan solusi 
+                    digital yang bermanfaat untuk kehidupan sehari-hari.
+                </p>
+                <p>
+                    Multi-Tool App adalah salah satu proyek yang saya kembangkan sebagai media pembelajaran 
+                    sekaligus untuk membantu memudahkan berbagai perhitungan yang sering dibutuhkan dalam 
+                    aktivitas sehari-hari.
+                </p>
+            </div>
+
+            <!-- Motivasi & Tujuan -->
+            <div class="section">
+                <h2>
+                    <span>🎯</span>
+                    Motivasi & Tujuan
+                </h2>
+                <p>
+                    Aplikasi ini saya buat dengan tujuan:
+                </p>
+                <ul>
+                    <li><strong>Belajar & Berkembang:</strong> Meningkatkan skill programming dan web development</li>
+                    <li><strong>Membantu Pengguna:</strong> Menyediakan tools praktis untuk perhitungan sehari-hari</li>
+                    <li><strong>Portofolio:</strong> Menunjukkan kemampuan dalam mengembangkan aplikasi web</li>
+                    <li><strong>Problem Solving:</strong> Mencari solusi untuk kebutuhan komputasi sederhana</li>
+                </ul>
+            </div>
+
+            
+            </div>
+
+            <!-- Kontak -->
+            <div class="section">
+                <h2>
+                    <span>📞</span>
+                    Hubungi Saya
+                </h2>
+                <p>
+                    Punya saran, kritik, atau ingin berkolaborasi? Jangan ragu untuk menghubungi saya!
+                </p>
+                
+                <div class="contact-grid">
+                    <div class="contact-card email">
+                        <span class="icon">📧</span>
+                        <h3>Email</h3>
+                        <a href="sitinaozah25@gmail.com">sitinaozah25@gmail.com</a>
+                    </div>
+                    
+                    <div class="contact-card github">
+                        <span class="icon">🐙</span>
+                        <h3>GitHub</h3>
+                        <a href="https://github.com/sitinaozah25-stack" target="_blank">https://github.com/sitinaozah25-stack</a>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+
+            <!-- Ucapan Terima Kasih -->
+            <div class="section">
+                <h2>
+                    <span>🙏</span>
+                    Terima Kasih
+                </h2>
+                <p>
+                    Terima kasih sudah menggunakan Multi-Tool App! Saya sangat menghargai setiap masukan dan 
+                    saran dari pengguna untuk terus mengembangkan aplikasi ini menjadi lebih baik.
+                </p>
+                <p>
+                    <strong>Mari belajar dan berkembang bersama!</strong> 🚀
+                </p>
+            </div>
+
+            <!-- Back Button -->
+            <a href="home.html" class="back-button">
+                <span>🏠</span>
+                Kembali ke Home
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Copyright_Sija.2025.</p>
+        <p class="footer-subtitle">Multi-Tool App - Aplikasi serba guna untuk kebutuhan sehari-hari</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Smooth animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate contact cards
+            const contactCards = document.querySelectorAll('.contact-card');
+            contactCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 200 * (index + 1));
+            });
+
+            // Animate sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateX(-30px)';
+                
+                setTimeout(() => {
+                    section.style.transition = 'all 0.8s ease';
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateX(0)';
+                }, 150 * (index + 1));
+            });
+
+            // Navigation hover effects
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    if (!this.classList.contains('active')) {
+                        this.style.transform = 'translateY(-2px)';
+                    }
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
